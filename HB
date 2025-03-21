@@ -24,7 +24,7 @@ curl -s https://raw.githubusercontent.com/noxuspace/cryptofortochka/main/logo_cl
     echo -e "${CYAN}1) Установка бота${NC}"
     echo -e "${CYAN}2) Обновление бота${NC}"
     echo -e "${CYAN}3) Просмотр логов${NC}"
-    echo -e "${CYAN}4) Рестарт бота${NC}"
+    echo -e "${CYAN}4) Старт\Рестарт бота${NC}"
     echo -e "${CYAN}5) Заменить на свои вопросы${NC}"
     echo -e "${CYAN}6) Удаление бота${NC}"
 
