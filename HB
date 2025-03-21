@@ -16,6 +16,9 @@ if ! command -v curl &> /dev/null; then
 fi
 sleep 1
 
+# Главный цикл меню
+while true; do
+    clear
 # Отображаем логотип
 curl -s https://raw.githubusercontent.com/noxuspace/cryptofortochka/main/logo_club.sh | bash
 
@@ -27,6 +30,7 @@ curl -s https://raw.githubusercontent.com/noxuspace/cryptofortochka/main/logo_cl
     echo -e "${CYAN}4) Старт\Рестарт бота${NC}"
     echo -e "${CYAN}5) Заменить на свои вопросы${NC}"
     echo -e "${CYAN}6) Удаление бота${NC}"
+    echo -e "${YELLOW}0) Выход${NC}"
 
     echo -e "${YELLOW}Введите номер:${NC} "
     read choice
@@ -104,8 +108,8 @@ EOT"
             echo -e "${PURPLE}-----------------------------------------------------------------------${NC}"
             echo -e "${GREEN}CRYPTO FORTOCHKA — вся крипта в одном месте!${NC}"
             echo -e "${CYAN}Наш Telegram https://t.me/cryptoforto${NC}"
-
-            sleep 2
+            echo -e "${PURPLE}=======================================================${NC}"
+            read -p "Нажмите Enter для возврата в меню..."
             ;;
 
         2)
@@ -122,10 +126,12 @@ EOT"
 
         4)
             clear
-            echo -e "${BLUE}Рестарт бота...${NC}"
             sudo systemctl restart hyper-bot.service
-            sudo journalctl -u hyper-bot.service -f
+            echo -e "${GREEN}Бот перезапущен! Последние логи:${NC}"
+            sudo journalctl -u hyper-bot.service -n 10 --no-pager
+            read -p "Нажмите Enter для возврата в меню..."
             ;;
+
         5)
             clear
             sudo systemctl stop hyper-bot.service
@@ -142,8 +148,12 @@ EOT"
             cat > "$QUESTIONS_FILE"
 
             sudo systemctl restart hyper-bot.service
-            sudo journalctl -u hyper-bot.service -f           
+            sudo journalctl -u hyper-bot.service -f   
+
+          echo -e "${GREEN}Вопросы обновлены! Запустите бота через пункт 4${NC}"
+            read -p "Нажмите Enter для возврата в меню..."
             ;;
+        
         6)
             echo -e "${BLUE}Удаление бота...${NC}"
 
@@ -164,8 +174,13 @@ EOT"
             echo -e "${CYAN}Наш Telegram https://t.me/cryptoforto${NC}"
             sleep 1
             ;;
+       0)
+            echo -e "${BLUE}Выход...${NC}"
+            exit 0
+            ;;
 
         *)
             echo -e "${RED}Неверный выбор. Пожалуйста, введите номер от 1 до 6!${NC}"
             ;;
     esac
+done
