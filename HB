@@ -30,7 +30,7 @@ curl -s https://raw.githubusercontent.com/noxuspace/cryptofortochka/main/logo_cl
     echo -e "${CYAN}4) Старт\Рестарт бота${NC}"
     echo -e "${CYAN}5) Заменить на свои вопросы${NC}"
     echo -e "${CYAN}6) Удаление бота${NC}"
-    echo -e "${CYAN}0) Выход${NC}"
+    echo -e "${CYAN}01) Выход${NC}"
 
     echo -e "${YELLOW}Введите номер:${NC} "
     read choice
