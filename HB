@@ -33,6 +33,7 @@ curl -s https://raw.githubusercontent.com/noxuspace/cryptofortochka/main/logo_cl
 
     case $choice in
         1)
+            clear
             echo -e "${BLUE}Установка бота...${NC}"
 
             # --- 1. Обновление системы и установка необходимых пакетов ---
@@ -108,6 +109,7 @@ EOT"
             ;;
 
         2)
+            clear
             echo -e "${BLUE}Обновление бота...${NC}"
             sleep 2
             echo -e "${GREEN}Обновление бота не требуется!${NC}"
@@ -119,11 +121,13 @@ EOT"
             ;;
 
         4)
+            clear
             echo -e "${BLUE}Рестарт бота...${NC}"
             sudo systemctl restart hyper-bot.service
             sudo journalctl -u hyper-bot.service -f
             ;;
         5)
+            clear
             sudo systemctl stop hyper-bot.service
             sleep 2
             QUESTIONS_FILE="$HOME/hyperbolic/questions.txt"
