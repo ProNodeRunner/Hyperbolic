@@ -151,7 +151,6 @@ EOT"
             sudo systemctl restart hyper-bot.service
             sudo journalctl -u hyper-bot.service -f   
 
-          echo -e "${GREEN}Вопросы обновлены! Запустите бота через пункт 4${NC}"
             read -p "Нажмите Enter для возврата в меню..."
             ;;
         
